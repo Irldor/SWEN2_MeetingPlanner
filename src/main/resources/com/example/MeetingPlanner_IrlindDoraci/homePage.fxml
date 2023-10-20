@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MeetingPlanner_IrlindDoraci.controller.homeScreenController">
+   <top>
+      <VBox prefHeight="101.0" prefWidth="656.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Meeting Planner">
+               <font>
+                  <Font name="MT Extra" size="18.0" />
+               </font>
+            </Text>
+            <Line endX="813.2999267578125" endY="-166.04928588867188" fill="RED" startX="1.0" startY="-166.04928588867188" strokeLineCap="ROUND">
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </Line>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#generateReport" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #00bfff;" text="Generate Report" textFill="WHITE">
+                     <font>
+                        <Font name="MS Outlook" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#generateReportById" prefHeight="27.0" prefWidth="215.0" style="-fx-background-color: #00bfff;" text="Specific Generate Report" textFill="WHITE">
+                     <font>
+                        <Font name="MS Outlook" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Search" />
+                  <TextField fx:id="txtSearch" prefHeight="26.0" prefWidth="686.0" style="-fx-background-color: grey;" />
+               </children>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="30.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </top>
+   <left>
+      <VBox prefHeight="419.0" prefWidth="174.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="28.0" prefWidth="174.0" spacing="10.0">
+               <children>
+                  <Label text="Meetings">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#addMeeting" style="-fx-background-color: #00bfff;" text="+">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleDeleteButtonClick" style="-fx-background-color: #00bfff;" text="-">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <ListView fx:id="nameListView" onMouseClicked="#modifyMeeting" prefHeight="429.0" prefWidth="174.0" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </left>
+   <center>
+      <AnchorPane fx:id="anchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

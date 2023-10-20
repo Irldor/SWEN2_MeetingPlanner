@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="553.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MeetingPlanner_IrlindDoraci.controller.ModifyPlannerController">
+    <children>
+        <Label fx:id="nameTxt" layoutX="15.0" layoutY="11.0" prefHeight="27.0" prefWidth="618.0" text="Name">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+        <Line endX="531.8928833007812" layoutX="109.0" layoutY="54.0" startX="-108.99998474121094" />
+        <TextField fx:id="addTitle" layoutX="74.0" layoutY="66.0" prefHeight="37.0" prefWidth="508.0" />
+        <Text layoutX="24.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="24.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <DatePicker fx:id="fromDate" layoutX="74.0" layoutY="118.0" prefHeight="26.0" prefWidth="119.0" />
+        <Text layoutX="372.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <DatePicker fx:id="toDate" layoutX="406.0" layoutY="119.0" prefHeight="26.0" prefWidth="133.0" />
+        <ComboBox fx:id="fromTimePicker" layoutX="204.0" layoutY="119.0" />
+        <Text layoutX="24.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agenda">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="26.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <ListView fx:id="notesList" layoutX="26.0" layoutY="331.0" prefHeight="119.0" prefWidth="554.0" />
+        <TextField fx:id="noteField" layoutX="99.0" layoutY="466.0" prefHeight="26.0" prefWidth="482.0" promptText="Enter your note" />
+        <Button fx:id="addNoteBtn" layoutX="24.0" layoutY="466.0" onAction="#addNote" style="-fx-background-color: #00bfff;" text="Add Note" />
+        <ComboBox fx:id="toTimePicker" layoutX="553.0" layoutY="119.0" />
+        <Button fx:id="saveMeetingBtn" layoutX="471.0" layoutY="504.0" onAction="#addMeeting" prefHeight="38.0" prefWidth="127.0" style="-fx-background-color: #00bfff;" text="Update meeting" />
+      <TextArea fx:id="agenda" layoutX="27.0" layoutY="187.0" prefHeight="119.0" prefWidth="554.0" />
+    </children>
+</AnchorPane>

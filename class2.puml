@@ -1,0 +1,148 @@
+@startuml
+class com.example.MeetingPlanner_IrlindDoraci.controller.homeScreenController {
+- {static} Logger logger
+- TextField txtSearch
+- ListView<MeetingName> nameListView
+- AnchorPane anchorPane
+- MeetingDAO meetingDAO
+- MeetingService meetingService
+- FilteredList<MeetingName> filteredMeetingNames
++ void addMeeting()
++ void generateReport(List<Meeting>)
++ void generateReportById()
++ void generateReport()
++ void modifyMeeting()
++ void handleDeleteButtonClick()
++ void loadMeetingNames()
+- void filterMeetingNames(String)
++ void initialize(URL,ResourceBundle)
+}
+class com.example.MeetingPlanner_IrlindDoraci.junitTest.MeetingDAOTest {
+- MeetingDAO meetingDAO
+- DatabaseConnection dbConnection
++ void setUp()
++ void tearDown()
++ void testAddMeeting()
++ void testGetMeetingNames()
++ void testDeleteMeeting()
++ void testGetMeetingDetails()
++ void testUpdateMeeting()
++ void testGetOverlappingMeetings()
++ void testIsOverlapping()
++ void testGetMeetingReport()
+}
+class com.example.MeetingPlanner_IrlindDoraci.Model.Meeting {
+- int id
+- String agenda
+- LocalDate fromDate
+- LocalDate toDate
+- LocalTime fromTime
+- LocalTime toTime
+- String notes
+- String name
++ <<Create>> Meeting(int,String,String,LocalDate,LocalDate,LocalTime,LocalTime,String)
++ <<Create>> Meeting(int,String,LocalDate,LocalDate,LocalTime,LocalTime,String)
++ <<Create>> Meeting(ResultSet)
++ int getId()
++ String getName()
++ void setName(String)
++ String getAgenda()
++ LocalDate getFromDate()
++ LocalDate getToDate()
++ LocalTime getFromTime()
++ LocalTime getToTime()
++ String getNotes()
+}
+class com.example.MeetingPlanner_IrlindDoraci.businesslayer.MeetingService {
+- MeetingDAO meetingDAO
++ void addMeeting(String,String,LocalDate,LocalDate,LocalTime,LocalTime,String)
++ List<MeetingName> getMeetingNames()
++ List<Meeting> getOverlappingMeetings(LocalDate,LocalDate,LocalTime,LocalTime)
++ void deleteMeeting(int)
++ Meeting getMeetingDetails(int)
++ boolean isOverlapping(LocalDate,LocalDate,LocalTime,LocalTime)
++ Meeting getMeetingDetailsByTitle(String)
++ void updateMeeting(int,String,LocalDate,LocalDate,LocalTime,LocalTime,String)
++ List<Meeting> getMeetingReport()
++ Meeting getMeetingById(int)
+}
+class com.example.MeetingPlanner_IrlindDoraci.config.DatabaseConnection {
+- {static} Connection connection
+- {static} Properties properties
++ {static} Connection getConnection()
++ {static} void closeConnection()
+}
+class com.example.MeetingPlanner_IrlindDoraci.dataaccesslayer.MeetingDAO {
++ void addMeeting(String,String,LocalDate,LocalDate,LocalTime,LocalTime,String)
++ List<MeetingName> getMeetingNames()
++ void deleteMeeting(int)
++ Meeting getMeetingDetails(int)
++ void updateMeeting(int,String,LocalDate,LocalDate,LocalTime,LocalTime,String)
++ List<Meeting> getOverlappingMeetings(LocalDate,LocalDate,LocalTime,LocalTime)
++ boolean isOverlapping(LocalDate,LocalDate,LocalTime,LocalTime)
++ List<Meeting> getMeetingReport()
++ Meeting getMeetingById(int)
++ Meeting getMeetingDetailsByTitle(String)
+}
+class com.example.MeetingPlanner_IrlindDoraci.controller.addPlannerController {
+- TextField noteField
+- TextField addTitle
+- DatePicker fromDate
+- DatePicker toDate
+- TextArea agenda
+- ListView<HBox> notesList
+- Label nameTxt
+- ComboBox<String> fromTimePicker
+- ComboBox<String> toTimePicker
+- homeScreenController homeController
+- {static} Logger logger
+- MeetingService meetingService
++ void setHomeController(homeScreenController)
+- void addNote()
+- void addMeeting()
+- String getNotes()
++ void initialize(URL,ResourceBundle)
+}
+class com.example.MeetingPlanner_IrlindDoraci.Main {
++ void start(Stage)
++ {static} void main(String[])
+}
+class com.example.MeetingPlanner_IrlindDoraci.controller.ModifyPlannerController {
+- TextField noteField
+- TextField addTitle
+- DatePicker fromDate
+- DatePicker toDate
+- TextArea agenda
+- ListView<HBox> notesList
+- Label nameTxt
+- ComboBox<String> fromTimePicker
+- ComboBox<String> toTimePicker
+- int meetingId
+- MeetingService meetingService
+- {static} Logger logger
+- homeScreenController homeController
++ void setHomeController(homeScreenController)
+- void addNote()
+- void addMeeting()
++ void loadMeetingDetails(int,String)
+- String getNotes()
++ void initialize(URL,ResourceBundle)
+}note left of com.example.MeetingPlanner_IrlindDoraci.controller.ModifyPlannerController::meetingId
+ Add a field to store the meeting ID
+end note
+
+class com.example.MeetingPlanner_IrlindDoraci.Model.MeetingName {
+- int id
+- String name
++ <<Create>> MeetingName(int,String)
++ int getId()
++ String getName()
++ String toString()
+}
+
+
+javafx.fxml.Initializable <|.. com.example.MeetingPlanner_IrlindDoraci.controller.homeScreenController
+javafx.fxml.Initializable <|.. com.example.MeetingPlanner_IrlindDoraci.controller.addPlannerController
+javafx.application.Application <|-- com.example.MeetingPlanner_IrlindDoraci.Main
+javafx.fxml.Initializable <|.. com.example.MeetingPlanner_IrlindDoraci.controller.ModifyPlannerController
+@enduml
